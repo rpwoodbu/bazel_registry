@@ -1,0 +1,5 @@
+{
+    "type": "git_repository",
+    "remote": "https://source.developers.google.com/p/rpwoodbu-gce-test/r/httpserver",
+    "commit": "16f648b2da6c8866d5063ea95cde39c219d56dc7"
+}
