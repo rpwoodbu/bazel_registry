@@ -1,0 +1,5 @@
+{
+    "url": "https://github.com/rpwoodbu/toolchains_llvm/archive/refs/heads/rpwoodbu-arm-v1.5.0.tar.gz",
+    "integrity": "sha256-2/btS08S83hP4JBMksFkjFD38p9JCeLd8mwKVEk3WIs=",
+    "strip_prefix": "toolchains_llvm-rpwoodbu-arm-v1.5.0"
+}
