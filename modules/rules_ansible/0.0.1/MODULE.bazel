@@ -1,0 +1,31 @@
+module(name = "rules_ansible", version = "0.0.1")
+
+bazel_dep(name = "aspect_rules_py", version = "1.8.4")
+bazel_dep(name = "rules_python", version = "1.8.5")
+
+python = use_extension("@rules_python//python/extensions:python.bzl", "python")
+python.defaults(python_version = "3.13")
+python.toolchain(python_version = "3.13")
+
+pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
+pip.parse(
+    hub_name = "pypi_ansible",
+    python_version = "3.13",
+    requirements_lock = "//:requirements_lock.txt",
+)
+use_repo(pip, "pypi_ansible")
+
+#
+# The remainder is used only by `examples`.
+#
+
+http_file = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_file")
+
+# Use `http_file()` to fetch the collection tarball that you need. Use this 
+# multiple times to fetch all needed collections.
+http_file(
+    name = "ansible_community_general",
+    url = "https://galaxy.ansible.com/api/v3/plugin/ansible/content/published/collections/artifacts/community-general-12.5.0.tar.gz",
+    integrity = "sha256-PikCQqf3aMINHk7CvkqCgU8CB6tSnEL+cgYE4OonMMw=",
+    dev_dependency = True,  # For example purposes; feel free to omit.
+)
